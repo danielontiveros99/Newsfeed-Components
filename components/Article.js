@@ -114,3 +114,75 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h3');
+  const articleDate = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expandBtn = document.createElement('span');
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(expandBtn);
+
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expandBtn.classList.add("expandButton");
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  p1.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
+  expandBtn.textContent = "+";
+
+  expandBtn.addEventListener('click', function(){
+    article.classList.toggle('article-open');
+    })
+    
+  return article;
+}
+
+data.push(
+  {
+    title: `Daniel's Missery`,
+    date: `9/12/20`,
+    firstParagraph: `Here`,
+    secondParagraph: `it`,
+    thirdParagraph: `lies`,
+  }
+);
+console.log(data);
+
+const articles = document.querySelector('.articles');
+ data.forEach(data =>
+  articles.appendChild(articleMaker(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+  )
+
+
+// article.addEventListener('click', function(){
+//   article.classList.toggle('hello');
+// });
+
+// articles.appendChild(articleTitle);
+// articles.appendChild(articleDate);
+// articles.appendChild(p1);
+// articles.appendChild(p2);
+// articles.appendChild(p3);
+// articles.appendChild(expandBtn);
+
+// expandBtn.addEventListener('click', () =>{
+// article.classList.toggle('article-open')
+// })
+
+// articles.appendChild(articleMaker(data[0].title, data[0].date, data[0].firstParagraph, data[0].secondParagraph, data[0].thirdParagraph));
+// articles.appendChild(articleMaker(data[1].title, data[1].date, data[1].firstParagraph, data[1].secondParagraph, data[1].thirdParagraph));
+// articles.appendChild(articleMaker(data[2].title, data[2].date, data[2].firstParagraph, data[2].secondParagraph, data[2].thirdParagraph));
+// articles.appendChild(articleMaker(data[3].title, data[3].date, data[3].firstParagraph, data[3].secondParagraph, data[3].thirdParagraph));
+// articles.appendChild(articleMaker(data[4].title, data[4].date, data[4].firstParagraph, data[4].secondParagraph, data[4].thirdParagraph));
